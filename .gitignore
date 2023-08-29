@@ -14,18 +14,18 @@ __pycache__
 /python-api/tikapi/template.py
 /python-api/tikapi/*.egg-info
 /python-api/dist
-/dist
+# /dist
 *.egg-info
 test.js
 test.mjs
-index.d.ts
-index.js
-api.d.ts
+# index.d.ts
+# index.js
+# api.d.ts
 # testing
 /coverage
 
 # production
-/build
+# /build
 
 # misc
 .DS_Store
