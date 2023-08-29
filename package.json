@@ -8,9 +8,9 @@
   "type": "module",
   "scripts": {
     "build": "npm run build-python && npm run build-js",
-    "build-js": "npm run build-types && tsc && tsup index.ts --dts --clean && node after_build.js",
-    "build-types": "rests api.js -t ./api.d.ts --types_template ./template.ts",
-    "build-python": "rests api.js -p ./python-api/tikapi/api.py --python_template ./python-api/tikapi/template.py",
+    "build-js": "npm run build-types && tsc && tsup ./index.ts --dts --clean && node ./after_build.js",
+    "build-types": "rests ./api.js -t ./api.d.ts --types_template ./template.ts",
+    "build-python": "rests ./api.js -p ./python-api/tikapi/api.py --python_template ./python-api/tikapi/template.py",
     "tests": "echo \" no tests specified\""
   },
   "repository": {
@@ -50,7 +50,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "node-fetch": "^3.3.0",
+    "axios": "^1.5.0",
     "rests": "^1.1.0"
   }
 }

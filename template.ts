@@ -3,14 +3,14 @@
  * github.com/el1s7/rests
  */
 
-type json = 
- 			| string
- 			| number
- 			| boolean
- 			| null
- 			| json[]
- 			| {[key: string]: json};
-	
+type json =
+	| string
+	| number
+	| boolean
+	| null
+	| json[]
+	| { [key: string]: json };
+
 interface FormData {
 	[Symbol.iterator](): IterableIterator<[string, File | string]>;
 	/** Returns an array of key, value pairs for every entry in the list. */
@@ -25,7 +25,7 @@ interface ResponseObject {
 	statusCode: number,
 	statusText: string,
 	headers: Headers,
-	type: "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect" ,
+	type: "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect",
 	ok: boolean,
 	json?: any,
 	text?: string,
@@ -33,10 +33,10 @@ interface ResponseObject {
 	blob?: Blob,
 	message?: string
 
-    /**
-     * A convenient method to get the next batch of items, if the endpoint has iteration parameters (e.g cursor)
-     */
-    nextItems?: ()=> Promise<any> | null,
+	/**
+	 * A convenient method to get the next batch of items, if the endpoint has iteration parameters (e.g cursor)
+	 */
+	nextItems?: () => Promise<any> | null,
 
 	/**
 	 * A method for downloading and saving videos.
@@ -62,23 +62,28 @@ interface ResponseObject {
 
 		fetchOptions?: any
 	) => Promise<any>
+
+	/**
+	* A method for streaming the video buffer.
+	*/
+	streamVideo?: (videoId: string) => Promise<any>;
 }
 
 type HookRequest = {
 	/**
 	 * Fetch URL
 	 */
-	url: string, 
+	url: string,
 
 	/**
 	 * Fetch Options
 	 */
 	options: any,
-	
+
 	/**
 	 * The parameters supplied for this request
 	 */
-	 params: any
+	params: any
 
 	/**
 	 * Rests instance
@@ -101,23 +106,23 @@ interface Hooks {
 	/**
 	 * A hook function that is called on successful response, you can also modify and return a different response.
 	 */
-	 on_success?: (response: ResponseObject, request?: HookRequest) => any,
-	
+	on_success?: (response: ResponseObject, request?: HookRequest) => any,
+
 	/**
 	 * A hook function that is called on errors.
 	 * 
 	 * 
 	 * To return a different error:
 	 */
-	
+
 	on_error?: (error: ResponseObject | unknown, request?: HookRequest) => any,
 }
 
 interface Params {
-	[name: string]:{
+	[name: string]: {
 		/** The parameter HTTP name */
 		name?: string,
-		
+
 		/** Required or not */
 		required?: boolean,
 
@@ -131,7 +136,7 @@ interface Params {
 		example?: any,
 
 		/** Format functions that accepts supplied value and returns formatted value. */
-		format?: (value: any)=>any,
+		format?: (value: any) => any,
 
 		/** Regex validation */
 		validate?: RegExp | string,
@@ -139,9 +144,9 @@ interface Params {
 		/** Array validation */
 		in?: any[],
 
-        max?: number,
+		max?: number,
 
-        min?: number,
+		min?: number,
 
 		/** Default value */
 		default?: any,
@@ -156,22 +161,22 @@ interface Options extends Hooks {
 	base?: string,
 
 	sandboxBase?: string,
-	
+
 	headers?: any,
 
 	params?: Params,
-	
+
 	/**
 	 * Set default values for parameters
 	 */
-	 values?: {
+	values?: {
 		[param_name: string]: any
 	}
 
 	/**
 	 * Node-Fetch option for adding a proxy
 	 */
-	fetch_agent?: any, 
+	fetch_agent?: any,
 }
 
 interface newCategoryOptions {
@@ -205,7 +210,7 @@ declare class HideFuncProps<T>{
 }
 
 
-interface updateOptions<X> extends HideFuncProps<X>{
+interface updateOptions<X> extends HideFuncProps<X> {
 	set: (values: newCategoryValues) => X
 }
 
